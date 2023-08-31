@@ -1,0 +1,29 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+{% block contenido %}
+    <h4>Detalle de la Receta</h4>
+    <table class="table table-bordered border-primary">
+        <tr>
+            <th>ID:</th>
+            <td>{{ receta.id }}</td>
+        </tr>
+        <tr>
+            <th>Nombre de Receta:</th>
+            <td>{{ receta.titulo }}</td>
+        </tr>
+        <tr>
+            <th>Ingredientes:</th>
+            <td>{{ receta.ingredientes }}</td>
+        </tr>
+        <tr>
+            <th>Instrucciones:</th>
+            <td>{{ receta.instrucciones }}</td>
+        </tr>
+        <tr>
+            <th>Tiempo de Preparación:</th>
+            <td>{{ receta.tiempo_preparacion }}</td>
+        </tr>
+    </table>
+    <a href="{% url 'recetas' %}" class="btn btn-primary">Volver al Listado</a>
+{% endblock contenido %}

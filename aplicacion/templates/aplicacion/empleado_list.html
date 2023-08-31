@@ -1,0 +1,61 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+
+{% block contenido %}
+
+    <table>
+        <tr>
+            <td width="100"><h5>Agregar Empleado</h5></td>
+            <td>
+                <a
+                href="{% url 'create_empleado' %}"
+                class="btn btn-primary btn-sm"
+                ><i class="fa fa-plus fa-lg" title="New Record"> </i>
+                </a>
+            </td>
+        </tr>
+    </table>
+
+    <table class="table table-bordered border-primary">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Puesto</th>
+                <th>Salario</th>
+                <th>Fecha Contratacion</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for e in empleado_list %}
+        <tr>
+            <td>{{ e.id }}</td>
+            <td>{{ e.nombre }}</td>
+            <td>{{ e.apellido }}</td>
+            <td>{{ e.puesto }}</td>
+            <td>{{ e.salario }}</td>
+            <td>{{ e.fecha_contratacion }}</td>
+
+            <td>
+                <a
+                href="{% url 'update_empleado' e.id %}"
+                class="btn btn-primary"
+                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
+                </a>
+                <a
+                href="{% url 'delete_empleado' e.id %}"
+                class="btn btn-danger"
+                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
+                </a>
+            </td>        
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock contenido %}
